@@ -1,0 +1,11 @@
+%h1 Import purchases
+
+- if @total.present?
+  %h3="The total amount gross revenue represented by the last uploaded file was: #{number_to_currency @total, :precision => 2}"
+
+= form_tag import_purchases_path, :multipart => true do
+  .file
+    %label{:for => 'input'} Please a file with data about your purchases to import
+    = file_field_tag 'input'
+  .submit
+    = submit_tag 'Import'

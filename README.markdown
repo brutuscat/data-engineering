@@ -1,4 +1,4 @@
-# Challenge for Software Engineer - Big Data 
+# Challenge for Software Engineer - Big Data
 To better assess a candidates development skills, we would like to provide the following challenge.  You have as much time as you'd like (though we ask that you not spend more than a few hours).
 
 There are three jobs that both use this challenge:
@@ -41,3 +41,13 @@ Evaluation of your submission will be based on the following criteria. Additiona
 1. Did your application fulfill the basic requirements?
 1. Did you document the method for setting up and running your application?
 1. Did you follow the instructions for submission?
+
+## About my Application
+
+### Setup and Installation
+
+1. Pull the code
+1. `cd` into and `bundle install`
+1. Edit the `config/database.yml` to suit your needs (by default uses SQLite)
+1. Setup the db schema `bundle exec rake db:migrate`
+1. This a regular Rails App. So to run this you can use ```bundle exec rails s``` or your favorite Rack server.
