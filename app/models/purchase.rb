@@ -11,10 +11,10 @@ class Purchase < ActiveRecord::Base
   def self.import(*args)
     purchaser_name, item_description, item_price, quantity, merchant_address, merchant_name = args
     Purchase.create do |purchase|
-      purchase.create_purchaser(:name => purchaser_name)
+      purchase.purchaser = Purchaser.where(:name => purchaser_name).first_or_create
       item = Item.create(:description => item_description, :price => item_price.to_f)
       quantity.to_i.times{ purchase.items << item }
-      purchase.create_merchant(:address => merchant_address, :name => merchant_name)
+      purchase.merchant = Merchant.where(:address => merchant_address, :name => merchant_name).first_or_create
     end
   end
 end

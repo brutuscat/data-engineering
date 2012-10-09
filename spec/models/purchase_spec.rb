@@ -23,5 +23,19 @@ describe Purchase do
     it "items count" do
       expect{ Purchase.import(*data) }.to change{Purchase.first.items.count rescue 0}.from(0).to(2)
     end
+
+    context "finds" do
+      before(:all){
+        FactoryGirl.create(:purchaser, :name => "purchaser_name")
+        FactoryGirl.create(:merchant, :address => "merchant_address", :name => "merchant_name")
+      }
+
+      it "a purchaser" do
+        expect{ Purchase.import(*data) }.to_not change{Purchaser.count}.by(1)
+      end
+      it "a merchant" do
+        expect{ Purchase.import(*data) }.to_not change{Merchant.count}.by(1)
+      end
+    end
   end
 end
